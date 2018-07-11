@@ -7,12 +7,11 @@
 */
 
 #navigation {
-  padding: 1em 0;
   font-family: $sans;
   > ul.menu {
     @include list-reset();
     > li {
-      position: relative;
+      // position: relative;
       > ul.menu {
         position: absolute;
         top: 0;
@@ -22,18 +21,11 @@
         background-color: $owhite;
         li {
           white-space: nowrap;
-        }
-      }
-      @include hover {
-        background-color: $owhite;
-        > ul.menu {
-          top: 100%;
-          left: 0;
-        }
+          }
       }
       a {
         display: block;
-        padding: 10px 16px;
+        // padding: 10px 16px;
         font-weight: 600;
         &.active {
           border-bottom: 2px solid $highlight;
@@ -46,16 +38,10 @@
   }
 
   // Mobile navigation styles.
-  @include breakpoint($all-devices) {
+  @media (max-width: 767px) {
     position: fixed;
-    top: 76px;
-    right: -255px;
     z-index: 99999;
-    overflow-y: auto;
-    width: 255px;
-    height: 100%;
-    padding: 0 0 50px;
-    background-color: #f7f7f7;
+    width: 100%;
     transition: right 300ms;
     .menu-active & {
       right: 0;
@@ -65,8 +51,6 @@
       > li {
         float: none;
         display: block;
-        padding: 12px 16px;
-        border-bottom: 1px solid $ltgray;
         list-style: none;
         text-decoration: none;
         font-size: 20px;

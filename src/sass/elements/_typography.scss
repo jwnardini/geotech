@@ -6,7 +6,7 @@
 
 // Define baseline lineheight.
 $lineheight: 1.6em;
-
+@import url("https://use.typekit.net/rom2sia.css");
 // Define a border style.
 $border: 1px solid #ccc;
 
@@ -24,7 +24,6 @@ body {
   min-width: $min-width;
   color: $gray;
   font-family: $base-font-family;
-  line-height: $lineheight;
   @include breakpoint($all-devices) {
     &.noscroll {
       position: fixed;
@@ -36,15 +35,20 @@ body {
 }
 
 //Define heading styles.
-h1 {
-  font-family: $base-heading-font;
-}
+h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: $base-heading-font;
+  font-family: canada-type-gibson, sans-serif;
+}
+
+h1 {
+  font-size: 72px;
+  @media(max-width: 768px) {
+    font-size: 36px;
+  }
 }
 
 // Define a link style.
