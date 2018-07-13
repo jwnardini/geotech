@@ -18,6 +18,7 @@ require('./includes/form');
 require('./includes/tabs');
 require('./includes/sticky');
 require('./includes/geotech');
+
 // Lazysizes documentation: https://github.com/aFarkas/lazysizes.
 require('lazysizes');
 

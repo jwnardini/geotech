@@ -50,7 +50,7 @@ $('select').each(function () {
     $styledSelect.click(function (e) {
         e.stopPropagation();
         $('div.styledSelect.active').each(function () {
-            $(this).removeClass('active').next('ul.options').hide();
+            $(this).toggleClass('active').next('ul.options').hide();
         });
         $(this).toggleClass('active').next('ul.options').toggle();
     });
@@ -75,18 +75,35 @@ $('select').each(function () {
 
 // Hamburger menu controls
 
-    var forEach=function(t,o,r){if("[object Object]"===Object.prototype.toString.call(t))for(var c in t)Object.prototype.hasOwnProperty.call(t,c)&&o.call(r,t[c],c,t);else for(var e=0,l=t.length;l>e;e++)o.call(r,t[e],e,t)};
-    var hamburgers = document.querySelectorAll(".hamburger");
-    if (hamburgers.length > 0) {
-      forEach(hamburgers, function(hamburger) {
-        hamburger.addEventListener("click", function() {
-          this.classList.toggle("is-active");
-        }, false);
-      });
-    }
-    $('.hamburger').click(function() {
-			$(this).next("ul").toggleClass("expanded");
-    });
+var forEach=function(t,o,r){if("[object Object]"===Object.prototype.toString.call(t))for(var c in t)Object.prototype.hasOwnProperty.call(t,c)&&o.call(r,t[c],c,t);else for(var e=0,l=t.length;l>e;e++)o.call(r,t[e],e,t)};
+var hamburgers = document.querySelectorAll(".hamburger");
+if (hamburgers.length > 0) {
+  forEach(hamburgers, function(hamburger) {
+    hamburger.addEventListener("click", function() {
+      this.classList.toggle("is-active");
+    }, false);
+  });
+}
+$('.hamburger').click(function() {
+	$(this).next("ul").toggleClass("expanded");
+});
 
+// Add footer to expanded mobile menu bottom
+$('ul.menu').append($('#footer').html());
+
+//Fade in elements with .fade class on scroll
+$(window).on("load",function() {
+  $(window).scroll(function() {
+    var windowBottom = $(this).scrollTop() + $(this).innerHeight();
+    $(".fade").each(function() {
+      /* Check the location of each desired element */
+      var objectTop = $(this).offset().top;
+      /* If the element is completely within bounds of the window, fade it in */
+      if ((objectTop + 100) < windowBottom) { //object comes into view (scrolling down)
+        if ($(this).css("opacity")==0) {$(this).fadeTo(500,1);}
+      }
+    });
+  }).scroll(); //invoke scroll-handler on page-load
+});
   });
 })(jQuery);
